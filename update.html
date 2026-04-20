@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Update Item | Collectify</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===== Navbar ===== -->
+  <nav class="navbar navbar-expand-lg navbar-collectify">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><span class="brand-mark">◆</span>Collectify</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Manage</a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="create.html"><i class="bi bi-plus-circle me-2"></i>Add Item</a></li>
+              <li><a class="dropdown-item" href="read.html"><i class="bi bi-list-ul me-2"></i>List</a></li>
+              <li><a class="dropdown-item active" href="update.html"><i class="bi bi-pencil-square me-2"></i>Update</a></li>
+              <li><a class="dropdown-item" href="delete.html"><i class="bi bi-trash me-2"></i>Delete</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-outline-gold btn-sm px-3" href="login.html"><i class="bi bi-person-circle me-1"></i> Sign in</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Main ===== -->
+  <main class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-9">
+
+          <div class="text-center mb-4" data-aos="fade-up">
+            <div class="section-label">Edit</div>
+            <h1 class="section-title mb-2">Update Item</h1>
+            <p class="text-muted-2">Adjust details or refresh the estimated value.</p>
+          </div>
+
+          <!-- ===== Step 1: Selection card (shown when no ?id param) ===== -->
+          <div id="selectCard" class="card-lux" data-aos="fade-up" data-aos-delay="60" hidden>
+            <div class="card-body p-4 p-md-5">
+
+              <div class="d-flex align-items-center gap-3 mb-4 pb-3" style="border-bottom:1px solid var(--border);">
+                <div class="d-flex align-items-center justify-content-center" style="width:48px;height:48px;border-radius:12px;background:rgba(199,169,122,0.10);border:1px solid var(--border-strong);color:var(--accent);font-size:1.25rem;">
+                  <i class="bi bi-search"></i>
+                </div>
+                <div>
+                  <div class="text-muted-2 small" style="letter-spacing:.12em;text-transform:uppercase;">Step 1</div>
+                  <div style="font-family:'Playfair Display',serif;font-size:1.15rem;">Choose an item to edit</div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="selectCollection" class="form-label">Collection</label>
+                <select class="form-select" id="selectCollection">
+                  <option value="" selected disabled>Choose a collection...</option>
+                  <option value="Trading Cards">Trading Cards</option>
+                  <option value="Vinyl Records">Vinyl Records</option>
+                  <option value="Figurines">Figurines</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="selectItem" class="form-label">Item</label>
+                <select class="form-select" id="selectItem" disabled>
+                  <option value="" selected disabled>Select a collection first...</option>
+                </select>
+              </div>
+
+              <button type="button" class="btn btn-gold w-100 mt-2" id="continueBtn" disabled>
+                <i class="bi bi-arrow-right-circle me-1"></i> Continue to edit
+              </button>
+
+              <p class="text-center text-muted-2 small mt-3 mb-0">
+                Or pick an item directly from the <a href="read.html">list view</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- ===== Step 2: Edit form (shown after selection or ?id load) ===== -->
+          <div id="editCard" class="card-lux" data-aos="fade-up" data-aos-delay="60" hidden>
+            <div class="card-body p-4 p-md-5">
+
+              <div class="d-flex align-items-center gap-3 mb-4 pb-3" style="border-bottom:1px solid var(--border);">
+                <div class="d-flex align-items-center justify-content-center" id="editIconWrap" style="width:48px;height:48px;border-radius:12px;background:rgba(199,169,122,0.10);border:1px solid var(--border-strong);color:var(--accent);font-size:1.25rem;">
+                  <i class="bi bi-collection" id="editIcon"></i>
+                </div>
+                <div class="flex-grow-1">
+                  <div class="text-muted-2 small" style="letter-spacing:.12em;text-transform:uppercase;">Editing</div>
+                  <div style="font-family:'Playfair Display',serif;font-size:1.15rem;" id="editHeadline">Item</div>
+                </div>
+                <a href="update.html" class="btn btn-ghost btn-sm" title="Pick a different item">
+                  <i class="bi bi-arrow-repeat"></i>
+                </a>
+              </div>
+
+              <form id="updateForm">
+                <input type="hidden" id="itemId">
+
+                <div class="mb-3">
+                  <label for="itemName" class="form-label">Item Name</label>
+                  <input type="text" class="form-control" id="itemName" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="itemCategory" class="form-label">Category</label>
+                  <select class="form-select" id="itemCategory" required>
+                    <option>Cards</option>
+                    <option>Vinyl</option>
+                    <option>Figurines</option>
+                  </select>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-sm-6">
+                    <label for="purchasePrice" class="form-label">Purchase Price (USD)</label>
+                    <div class="input-group">
+                      <span class="input-group-text">$</span>
+                      <input type="number" step="0.01" min="0" class="form-control" id="purchasePrice" required>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="estimatedValue" class="form-label">Estimated Value (USD)</label>
+                    <div class="input-group">
+                      <span class="input-group-text">$</span>
+                      <input type="number" step="0.01" min="0" class="form-control" id="estimatedValue" required>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="d-flex flex-wrap gap-2 mt-4 pt-2">
+                  <button type="submit" class="btn btn-gold flex-fill">
+                    <i class="bi bi-save me-1"></i> Update Item
+                  </button>
+                  <a href="read.html" class="btn btn-ghost flex-fill">Cancel</a>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- ===== Not found card ===== -->
+          <div id="notFoundCard" class="card-lux" data-aos="fade-up" data-aos-delay="60" hidden>
+            <div class="card-body p-4 p-md-5 text-center">
+              <i class="bi bi-question-circle" style="font-size:2.5rem;color:var(--accent);"></i>
+              <h4 class="mt-3" style="font-family:'Playfair Display',serif;">Item not found</h4>
+              <p class="text-muted-2">That item ID doesn't match anything in your collection.</p>
+              <a href="read.html" class="btn btn-gold mt-2"><i class="bi bi-list-ul me-1"></i> Back to list</a>
+            </div>
+          </div>
+
+          <p class="text-center text-muted-2 small mt-3" data-aos="fade-up" data-aos-delay="120">
+            <i class="bi bi-info-circle me-1"></i> This is a prototype, changes are not persisted.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+      <div><span class="brand-mark">◆</span> <strong>Collectify</strong> · Curate. Value. Treasure.</div>
+      <div class="text-muted-2 small">© 2026 Collectify · Prototype</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });</script>
+  <script src="js/items.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+    (function () {
+      const selectCard   = document.getElementById('selectCard');
+      const editCard     = document.getElementById('editCard');
+      const notFoundCard = document.getElementById('notFoundCard');
+
+      const selectCollection = document.getElementById('selectCollection');
+      const selectItem       = document.getElementById('selectItem');
+      const continueBtn      = document.getElementById('continueBtn');
+
+      const editIcon    = document.getElementById('editIcon');
+      const editHeadline= document.getElementById('editHeadline');
+      const itemIdEl    = document.getElementById('itemId');
+      const itemName    = document.getElementById('itemName');
+      const itemCategory= document.getElementById('itemCategory');
+      const purchase    = document.getElementById('purchasePrice');
+      const estimated   = document.getElementById('estimatedValue');
+
+      function loadItem(item) {
+        itemIdEl.value      = item.id;
+        itemName.value      = item.name;
+        itemCategory.value  = item.category;
+        purchase.value      = Number(item.purchasePrice).toFixed(2);
+        estimated.value     = Number(item.estimatedValue).toFixed(2);
+        editHeadline.textContent = item.name;
+        editIcon.className  = 'bi ' + CollectifyUI.categoryIcon(item.category);
+
+        selectCard.hidden   = true;
+        notFoundCard.hidden = true;
+        editCard.hidden     = false;
+      }
+
+      function populateItems(collectionName) {
+        selectItem.innerHTML = '';
+        const opts = (window.COLLECTIFY_ITEMS || []).filter((it) => it.collection === collectionName);
+        if (!opts.length) {
+          selectItem.innerHTML = '<option value="" selected disabled>No items in this collection</option>';
+          selectItem.disabled = true;
+          continueBtn.disabled = true;
+          return;
+        }
+        const placeholder = document.createElement('option');
+        placeholder.value = '';
+        placeholder.disabled = true;
+        placeholder.selected = true;
+        placeholder.textContent = 'Choose an item...';
+        selectItem.appendChild(placeholder);
+        opts.forEach((it) => {
+          const o = document.createElement('option');
+          o.value = it.id;
+          o.textContent = it.name;
+          selectItem.appendChild(o);
+        });
+        selectItem.disabled = false;
+        continueBtn.disabled = true;
+      }
+
+      selectCollection.addEventListener('change', (e) => {
+        populateItems(e.target.value);
+      });
+
+      selectItem.addEventListener('change', () => {
+        continueBtn.disabled = !selectItem.value;
+      });
+
+      continueBtn.addEventListener('click', () => {
+        const item = CollectifyUI.findItem(selectItem.value);
+        if (item) loadItem(item);
+      });
+
+      document.getElementById('updateForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = itemName.value.trim() || 'Item';
+        CollectifyUI.showToast(name + ' has been updated');
+      });
+
+      // Entry routing
+      const id = CollectifyUI.getQueryParam('id');
+      if (id) {
+        const item = CollectifyUI.findItem(id);
+        if (item) loadItem(item);
+        else notFoundCard.hidden = false;
+      } else {
+        selectCard.hidden = false;
+      }
+    })();
+  </script>
+</body>
+</html>

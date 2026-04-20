@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Item Details | Collectify</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===== Navbar ===== -->
+  <nav class="navbar navbar-expand-lg navbar-collectify">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><span class="brand-mark">◆</span>Collectify</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Manage</a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="create.html"><i class="bi bi-plus-circle me-2"></i>Add Item</a></li>
+              <li><a class="dropdown-item active" href="read.html"><i class="bi bi-list-ul me-2"></i>List</a></li>
+              <li><a class="dropdown-item" href="update.html"><i class="bi bi-pencil-square me-2"></i>Update</a></li>
+              <li><a class="dropdown-item" href="delete.html"><i class="bi bi-trash me-2"></i>Delete</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-outline-gold btn-sm px-3" href="login.html"><i class="bi bi-person-circle me-1"></i> Sign in</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Main ===== -->
+  <main class="section">
+    <div class="container">
+
+      <!-- ===== Found view ===== -->
+      <div id="detailView" hidden>
+
+        <!-- Breadcrumb -->
+        <nav class="crumbs mb-3" aria-label="breadcrumb" data-aos="fade-up">
+          <a href="dashboard.html">Dashboard</a>
+          <span class="sep">›</span>
+          <a href="read.html">List</a>
+          <span class="sep">›</span>
+          <span class="current" id="crumbName">Item</span>
+        </nav>
+
+        <div class="row g-4 g-lg-5 align-items-start">
+
+          <!-- Image / placeholder -->
+          <div class="col-lg-6" data-aos="fade-up">
+            <div class="product-image" id="productImage">
+              <span class="ribbon" id="ribbon">Collection</span>
+              <div class="placeholder">
+                <i class="bi bi-collection" id="placeholderIcon"></i>
+                <div class="ph-label" id="placeholderLabel">Item</div>
+                <div class="ph-sub" id="placeholderSub">Collectify Archive</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Details -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="80">
+
+            <span class="badge-cat" id="categoryBadge">Category</span>
+            <h1 class="product-name" id="productName">Item Name</h1>
+
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+              <span class="condition-chip" id="conditionChip">
+                <i class="bi bi-shield-check"></i><span id="conditionText">Near Mint</span>
+              </span>
+              <span class="text-muted-2 small">·</span>
+              <span class="text-muted-2 small" id="collectionLine">Trading Cards</span>
+            </div>
+
+            <p class="text-muted-2 mb-0" id="productDescription" style="line-height:1.7;">
+              Description goes here.
+            </p>
+
+            <div class="price-strip">
+              <div class="price-cell">
+                <div class="k">Purchase Price</div>
+                <div class="v" id="purchasePriceV">$0.00</div>
+              </div>
+              <div class="price-cell est">
+                <div class="k">Estimated Value</div>
+                <div class="v" id="estimatedValueV">$0.00</div>
+                <div class="delta" id="deltaLine">+0%</div>
+              </div>
+            </div>
+
+            <div class="meta-row mb-4">
+              <div>
+                <div class="meta-k">Acquired</div>
+                <div class="meta-v" id="acquiredV"></div>
+              </div>
+              <div>
+                <div class="meta-k">Item ID</div>
+                <div class="meta-v" id="itemIdV"></div>
+              </div>
+              <div>
+                <div class="meta-k">Last Updated</div>
+                <div class="meta-v">Today</div>
+              </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2">
+              <a href="#" class="btn btn-gold flex-fill" id="editBtn">
+                <i class="bi bi-pencil-square me-1"></i> Edit Item
+              </a>
+              <button type="button" class="btn btn-danger-soft flex-fill" id="deleteBtn" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+                <i class="bi bi-trash me-1"></i> Delete Item
+              </button>
+              <a href="read.html" class="btn btn-ghost flex-fill">
+                <i class="bi bi-arrow-left me-1"></i> Back to list
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- More from this collection -->
+        <div class="mt-5 pt-4" data-aos="fade-up" data-aos-delay="160" id="relatedWrap" hidden>
+          <div class="d-flex align-items-end justify-content-between mb-3">
+            <div>
+              <div class="section-label mb-1">Related</div>
+              <h4 class="mb-0" style="font-family:'Playfair Display',serif;">More from this collection</h4>
+            </div>
+            <a href="read.html" class="small">View all →</a>
+          </div>
+          <div class="row g-3" id="relatedList"></div>
+        </div>
+
+      </div>
+
+      <!-- ===== Not found view ===== -->
+      <div id="notFoundView" class="row justify-content-center" hidden>
+        <div class="col-md-7 col-lg-6">
+          <div class="card-lux" data-aos="fade-up">
+            <div class="card-body p-5 text-center">
+              <i class="bi bi-question-circle" style="font-size:3rem;color:var(--accent);"></i>
+              <h3 class="mt-3" style="font-family:'Playfair Display',serif;">Item not found</h3>
+              <p class="text-muted-2 mb-4">We couldn't find an item with that ID in your collection.</p>
+              <div class="d-flex justify-content-center gap-2 flex-wrap">
+                <a href="read.html" class="btn btn-gold"><i class="bi bi-list-ul me-1"></i> Back to list</a>
+                <a href="dashboard.html" class="btn btn-ghost"><i class="bi bi-speedometer2 me-1"></i> Dashboard</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== Confirmation Modal ===== -->
+  <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmDeleteLabel">
+            <i class="bi bi-exclamation-triangle-fill me-2" style="color:var(--highlight);"></i>
+            Confirm Removal
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-2">You're about to remove this item from your collection:</p>
+          <p class="mb-0" style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--accent);">
+            <span id="modalItemName"></span>
+          </p>
+          <p class="text-muted-2 small mt-3 mb-0">This action cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger-soft" id="confirmDeleteBtn">
+            <i class="bi bi-trash me-1"></i> Delete Permanently
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+      <div><span class="brand-mark">◆</span> <strong>Collectify</strong> · Curate. Value. Treasure.</div>
+      <div class="text-muted-2 small">© 2026 Collectify · Prototype</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });</script>
+  <script src="js/items.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+    (function () {
+      const detailView   = document.getElementById('detailView');
+      const notFoundView = document.getElementById('notFoundView');
+
+      const id = CollectifyUI.getQueryParam('id');
+      const item = CollectifyUI.findItem(id);
+
+      if (!item) {
+        notFoundView.hidden = false;
+        return;
+      }
+
+      // --- Core fields ---
+      document.title = item.name + ' | Collectify';
+      document.getElementById('crumbName').textContent = item.name;
+      document.getElementById('productName').textContent = item.name;
+      document.getElementById('categoryBadge').textContent = item.category;
+      document.getElementById('conditionText').textContent = item.condition;
+      document.getElementById('collectionLine').textContent = item.collection;
+      document.getElementById('productDescription').textContent = item.description;
+
+      document.getElementById('purchasePriceV').textContent  = CollectifyUI.formatMoney(item.purchasePrice);
+      document.getElementById('estimatedValueV').textContent = CollectifyUI.formatMoney(item.estimatedValue);
+
+      const gain = item.purchasePrice > 0
+        ? ((item.estimatedValue - item.purchasePrice) / item.purchasePrice) * 100
+        : 0;
+      const deltaEl = document.getElementById('deltaLine');
+      const sign = gain >= 0 ? '+' : '';
+      deltaEl.textContent = sign + gain.toFixed(1) + '% vs purchase';
+      if (gain < 0) deltaEl.classList.add('down');
+
+      // --- Meta row ---
+      const acq = item.acquired ? new Date(item.acquired) : null;
+      document.getElementById('acquiredV').textContent = acq
+        ? acq.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+        : '';
+      document.getElementById('itemIdV').textContent = item.id;
+
+      // --- Image / placeholder ---
+      const iconCls = CollectifyUI.categoryIcon(item.category);
+      document.getElementById('placeholderIcon').className = 'bi ' + iconCls;
+      document.getElementById('placeholderLabel').textContent = item.name;
+      document.getElementById('placeholderSub').textContent = item.collection;
+      document.getElementById('ribbon').textContent = item.collection;
+
+      if (item.image) {
+        const wrap = document.getElementById('productImage');
+        wrap.querySelector('.placeholder').remove();
+        const img = document.createElement('img');
+        img.src = item.image;
+        img.alt = item.name;
+        wrap.appendChild(img);
+      }
+
+      // --- Actions ---
+      document.getElementById('editBtn').href = 'update.html?id=' + encodeURIComponent(item.id);
+      document.getElementById('modalItemName').textContent = item.name;
+      document.getElementById('confirmDeleteBtn').addEventListener('click', () => {
+        window.location.href = 'read.html';
+      });
+
+      // --- Related items ---
+      const related = (window.COLLECTIFY_ITEMS || []).filter((it) => it.collection === item.collection && it.id !== item.id);
+      if (related.length) {
+        const wrap = document.getElementById('relatedWrap');
+        const list = document.getElementById('relatedList');
+        related.slice(0, 3).forEach((it) => {
+          const col = document.createElement('div');
+          col.className = 'col-md-4';
+          col.innerHTML =
+            '<a href="item.html?id=' + encodeURIComponent(it.id) + '" class="card-lux d-block h-100" style="text-decoration:none;">' +
+              '<div class="card-body p-3 d-flex align-items-center gap-3">' +
+                '<div class="d-flex align-items-center justify-content-center" style="width:44px;height:44px;border-radius:10px;background:rgba(199,169,122,0.10);border:1px solid var(--border-strong);color:var(--accent);flex-shrink:0;">' +
+                  '<i class="bi ' + CollectifyUI.categoryIcon(it.category) + '"></i>' +
+                '</div>' +
+                '<div class="flex-grow-1" style="min-width:0;">' +
+                  '<div style="font-weight:500;color:var(--text);" class="text-truncate">' + it.name + '</div>' +
+                  '<div class="text-muted-2 small">' + CollectifyUI.formatMoney(it.estimatedValue) + ' · ' + it.condition + '</div>' +
+                '</div>' +
+                '<i class="bi bi-arrow-right text-gold"></i>' +
+              '</div>' +
+            '</a>';
+          list.appendChild(col);
+        });
+        wrap.hidden = false;
+      }
+
+      detailView.hidden = false;
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Collectify</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===== Navbar ===== -->
+  <nav class="navbar navbar-expand-lg navbar-collectify">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><span class="brand-mark">◆</span>Collectify</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Manage</a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="create.html"><i class="bi bi-plus-circle me-2"></i>Add Item</a></li>
+              <li><a class="dropdown-item" href="read.html"><i class="bi bi-list-ul me-2"></i>List</a></li>
+              <li><a class="dropdown-item" href="update.html"><i class="bi bi-pencil-square me-2"></i>Update</a></li>
+              <li><a class="dropdown-item" href="delete.html"><i class="bi bi-trash me-2"></i>Delete</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-outline-gold btn-sm px-3" href="login.html"><i class="bi bi-person-circle me-1"></i> Sign in</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <header class="section pt-5 pb-3">
+    <div class="container text-center" data-aos="fade-up">
+      <div class="section-label">About</div>
+      <h1 class="section-title mb-2">The story behind Collectify</h1>
+      <p class="text-muted-2 mx-auto" style="max-width:640px;">
+        A curated home for every collection you've built: trading cards, vinyl,
+        figurines, coins, memorabilia, valued, organized, and beautifully presented.
+      </p>
+    </div>
+  </header>
+
+  <!-- ===== Team ===== -->
+  <section class="section pt-4">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8" data-aos="fade-up">
+          <div class="card-lux">
+            <div class="card-body p-4 p-md-5 text-center">
+              <div class="profile-avatar mx-auto mb-3" style="width:96px;height:96px;font-size:2.1rem;">SG</div>
+              <h3 style="font-family:'Playfair Display',serif;margin-bottom:.25rem;">Shlok Goud</h3>
+              <div class="text-muted-2 small" style="letter-spacing:.18em;text-transform:uppercase;">Developer</div>
+              <p class="text-muted-2 mt-3 mb-0" style="line-height:1.7;">
+                Responsible for UI design and implementation across every page of
+                Collectify, from the theme system and component library to the
+                charts, forms, and the data model below.
+              </p>
+              <div class="d-flex justify-content-center gap-2 mt-4">
+                <a href="#" class="social-btn" style="width:auto;padding:.55rem .9rem;"><i class="bi bi-github"></i> GitHub</a>
+                <a href="#" class="social-btn" style="width:auto;padding:.55rem .9rem;"><i class="bi bi-linkedin"></i> LinkedIn</a>
+                <a href="mailto:shlok.n.goud@gmail.com" class="social-btn" style="width:auto;padding:.55rem .9rem;"><i class="bi bi-envelope"></i> Email</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Logical Data Model ===== -->
+  <section class="section pt-3">
+    <div class="container">
+      <div class="text-center mb-4" data-aos="fade-up">
+        <div class="section-label">Data Model</div>
+        <h2 class="section-title mb-2">How Collectify sees your collections</h2>
+        <p class="text-muted-2 mx-auto" style="max-width:620px;">
+          Every user owns many collections. Every collection holds many items.
+          Each item can track its own price history over time.
+        </p>
+      </div>
+
+      <!-- Inline SVG ER diagram (replaces /assets/ldm.png) -->
+      <div class="card-lux" data-aos="fade-up" data-aos-delay="60">
+        <div class="card-body p-3 p-md-4">
+          <div class="ldm-wrap" style="width:100%;overflow-x:auto;">
+            <svg role="img" aria-labelledby="ldmTitle ldmDesc"
+                 viewBox="0 0 1040 360" preserveAspectRatio="xMidYMid meet"
+                 style="width:100%;height:auto;min-width:760px;display:block;">
+              <title id="ldmTitle">Collectify Logical Data Model</title>
+              <desc id="ldmDesc">Four entities connected by one-to-many relationships: User to Collections, Collection to Items, Item to PriceHistory.</desc>
+
+              <defs>
+                <!-- arrowhead (crow's foot style simplified) -->
+                <marker id="many" viewBox="0 0 14 14" refX="12" refY="7" markerWidth="14" markerHeight="14" orient="auto-start-reverse">
+                  <path d="M0 0 L12 7 L0 14 M6 0 L6 14" fill="none" stroke="#D98880" stroke-width="1.6"/>
+                </marker>
+                <marker id="one" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+                  <line x1="2" y1="1" x2="2" y2="11" stroke="#C7A97A" stroke-width="1.6"/>
+                  <line x1="6" y1="1" x2="6" y2="11" stroke="#C7A97A" stroke-width="1.6"/>
+                </marker>
+                <linearGradient id="boxGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#2E2335"/>
+                  <stop offset="1" stop-color="#261C2C"/>
+                </linearGradient>
+              </defs>
+
+              <style>
+                .entity { fill: url(#boxGrad); stroke: rgba(199,169,122,0.45); stroke-width: 1.25; }
+                .entity-head { fill: rgba(199,169,122,0.12); stroke: rgba(199,169,122,0.35); stroke-width: 1; }
+                .entity-title { font: 600 15px 'Playfair Display', serif; fill: #F2EDE4; }
+                .field { font: 500 12.5px 'Inter', sans-serif; fill: #F2EDE4; }
+                .field-type { font: 400 11.5px 'Inter', sans-serif; fill: #B8ADAE; }
+                .key { font: 700 10px 'Inter', sans-serif; letter-spacing: .1em; fill: #C7A97A; }
+                .fk  { fill: #D98880; }
+                .rel-line { fill: none; stroke: #D98880; stroke-width: 1.6; }
+                .rel-label { font: 600 10.5px 'Inter', sans-serif; letter-spacing: .1em; fill: #D98880; }
+                .divider  { stroke: rgba(199,169,122,0.2); stroke-width: 1; }
+              </style>
+
+              <!-- USER -->
+              <g transform="translate(30,90)">
+                <rect class="entity" x="0" y="0" width="200" height="180" rx="10"/>
+                <rect class="entity-head" x="0" y="0" width="200" height="36" rx="10"/>
+                <rect class="entity-head" x="0" y="26" width="200" height="10"/>
+                <text class="entity-title" x="100" y="23" text-anchor="middle">User</text>
+
+                <text class="key"       x="14" y="62">PK</text>
+                <text class="field"     x="44" y="62">user_id</text>
+                <text class="field-type" x="186" y="62" text-anchor="end">UUID</text>
+                <line class="divider" x1="10" y1="74" x2="190" y2="74"/>
+
+                <text class="field"     x="14" y="94">name</text>
+                <text class="field-type" x="186" y="94" text-anchor="end">VARCHAR</text>
+
+                <text class="field"     x="14" y="120">email</text>
+                <text class="field-type" x="186" y="120" text-anchor="end">VARCHAR</text>
+
+                <text class="field"     x="14" y="146">password_hash</text>
+                <text class="field-type" x="186" y="146" text-anchor="end">TEXT</text>
+
+                <text class="field"     x="14" y="170">created_at</text>
+                <text class="field-type" x="186" y="170" text-anchor="end">TIMESTAMP</text>
+              </g>
+
+              <!-- COLLECTION -->
+              <g transform="translate(290,90)">
+                <rect class="entity" x="0" y="0" width="200" height="180" rx="10"/>
+                <rect class="entity-head" x="0" y="0" width="200" height="36" rx="10"/>
+                <rect class="entity-head" x="0" y="26" width="200" height="10"/>
+                <text class="entity-title" x="100" y="23" text-anchor="middle">Collection</text>
+
+                <text class="key"       x="14" y="62">PK</text>
+                <text class="field"     x="44" y="62">collection_id</text>
+                <text class="field-type" x="186" y="62" text-anchor="end">UUID</text>
+                <line class="divider" x1="10" y1="74" x2="190" y2="74"/>
+
+                <text class="key fk"    x="14" y="94">FK</text>
+                <text class="field"     x="44" y="94">user_id</text>
+                <text class="field-type" x="186" y="94" text-anchor="end">UUID</text>
+
+                <text class="field"     x="14" y="120">name</text>
+                <text class="field-type" x="186" y="120" text-anchor="end">VARCHAR</text>
+
+                <text class="field"     x="14" y="146">category</text>
+                <text class="field-type" x="186" y="146" text-anchor="end">ENUM</text>
+
+                <text class="field"     x="14" y="170">created_at</text>
+                <text class="field-type" x="186" y="170" text-anchor="end">TIMESTAMP</text>
+              </g>
+
+              <!-- ITEM -->
+              <g transform="translate(550,90)">
+                <rect class="entity" x="0" y="0" width="200" height="180" rx="10"/>
+                <rect class="entity-head" x="0" y="0" width="200" height="36" rx="10"/>
+                <rect class="entity-head" x="0" y="26" width="200" height="10"/>
+                <text class="entity-title" x="100" y="23" text-anchor="middle">Item</text>
+
+                <text class="key"       x="14" y="62">PK</text>
+                <text class="field"     x="44" y="62">item_id</text>
+                <text class="field-type" x="186" y="62" text-anchor="end">UUID</text>
+                <line class="divider" x1="10" y1="74" x2="190" y2="74"/>
+
+                <text class="key fk"    x="14" y="94">FK</text>
+                <text class="field"     x="44" y="94">collection_id</text>
+                <text class="field-type" x="186" y="94" text-anchor="end">UUID</text>
+
+                <text class="field"     x="14" y="120">name</text>
+                <text class="field-type" x="186" y="120" text-anchor="end">VARCHAR</text>
+
+                <text class="field"     x="14" y="146">purchase_price</text>
+                <text class="field-type" x="186" y="146" text-anchor="end">DECIMAL</text>
+
+                <text class="field"     x="14" y="170">estimated_value</text>
+                <text class="field-type" x="186" y="170" text-anchor="end">DECIMAL</text>
+              </g>
+
+              <!-- PRICE HISTORY -->
+              <g transform="translate(810,90)">
+                <rect class="entity" x="0" y="0" width="200" height="180" rx="10"/>
+                <rect class="entity-head" x="0" y="0" width="200" height="36" rx="10"/>
+                <rect class="entity-head" x="0" y="26" width="200" height="10"/>
+                <text class="entity-title" x="100" y="23" text-anchor="middle">PriceHistory</text>
+
+                <text class="key"       x="14" y="62">PK</text>
+                <text class="field"     x="44" y="62">price_id</text>
+                <text class="field-type" x="186" y="62" text-anchor="end">UUID</text>
+                <line class="divider" x1="10" y1="74" x2="190" y2="74"/>
+
+                <text class="key fk"    x="14" y="94">FK</text>
+                <text class="field"     x="44" y="94">item_id</text>
+                <text class="field-type" x="186" y="94" text-anchor="end">UUID</text>
+
+                <text class="field"     x="14" y="120">recorded_at</text>
+                <text class="field-type" x="186" y="120" text-anchor="end">TIMESTAMP</text>
+
+                <text class="field"     x="14" y="146">value</text>
+                <text class="field-type" x="186" y="146" text-anchor="end">DECIMAL</text>
+
+                <text class="field"     x="14" y="170">source</text>
+                <text class="field-type" x="186" y="170" text-anchor="end">VARCHAR</text>
+              </g>
+
+              <!-- Relationships -->
+              <!-- User 1 ── M Collection -->
+              <line class="rel-line" x1="230" y1="180" x2="290" y2="180" marker-start="url(#one)" marker-end="url(#many)"/>
+              <text class="rel-label" x="260" y="172" text-anchor="middle">1 : M</text>
+
+              <!-- Collection 1 ── M Item -->
+              <line class="rel-line" x1="490" y1="180" x2="550" y2="180" marker-start="url(#one)" marker-end="url(#many)"/>
+              <text class="rel-label" x="520" y="172" text-anchor="middle">1 : M</text>
+
+              <!-- Item 1 ── M PriceHistory -->
+              <line class="rel-line" x1="750" y1="180" x2="810" y2="180" marker-start="url(#one)" marker-end="url(#many)"/>
+              <text class="rel-label" x="780" y="172" text-anchor="middle">1 : M</text>
+
+              <!-- Legend -->
+              <g transform="translate(30,310)">
+                <circle cx="6" cy="6" r="5" fill="#C7A97A"/>
+                <text class="field-type" x="20" y="10">PK · Primary Key</text>
+                <circle cx="150" cy="6" r="5" fill="#D98880"/>
+                <text class="field-type" x="164" y="10">FK · Foreign Key</text>
+                <text class="field-type" x="300" y="10">Relationships shown as 1 : M (one-to-many)</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Relationship description -->
+      <div class="row g-4 mt-4">
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="bi bi-people"></i></div>
+            <h3>User → Collections</h3>
+            <p>One user can curate many collections, each grouped by theme or category.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="80">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="bi bi-collection"></i></div>
+            <h3>Collection → Items</h3>
+            <p>Each collection holds many individual items like cards, vinyl and figurines, along with purchase and valuation data.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="160">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="bi bi-graph-up-arrow"></i></div>
+            <h3>Item → PriceHistory</h3>
+            <p>Every item tracks its valuation over time, enabling trend analysis and portfolio insights.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+      <div><span class="brand-mark">◆</span> <strong>Collectify</strong> · Curate. Value. Treasure.</div>
+      <div class="text-muted-2 small">© 2026 Collectify · Prototype</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });</script>
+</body>
+</html>
