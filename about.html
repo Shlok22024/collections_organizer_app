@@ -18,7 +18,7 @@
   <!-- ===== Navbar ===== -->
   <nav class="navbar navbar-expand-lg navbar-collectify">
     <div class="container">
-      <a class="navbar-brand" href="index.html"><span class="brand-mark">◆</span>Collectify</a>
+      <a class="navbar-brand" href="index.html"><span class="brand-mark"><i class="bi bi-diamond-fill"></i></span>Collectify</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -49,10 +49,14 @@
     <div class="container text-center" data-aos="fade-up">
       <div class="section-label">About</div>
       <h1 class="section-title mb-2">The story behind Collectify</h1>
-      <p class="text-muted-2 mx-auto" style="max-width:640px;">
-        A curated home for every collection you've built: trading cards, vinyl,
-        figurines, coins, memorabilia, valued, organized, and beautifully presented.
+      <div class="text-muted-2 mx-auto" style="max-width:760px; line-height:1.9;">
+      <p>
+        Collectify was inspired by a simple problem: collectors often build meaningful collections over time, but they end up managing them across different apps, spreadsheets, notes, or marketplace platforms. A vinyl collector may use one platform to track records, a trading card collector may use another, and anime merchandise or figurines may not have a clean home at all. That creates a fragmented experience where it becomes difficult to view everything in one place, understand the value of a collection, or simply organize personal items in a way that feels polished and intentional.
       </p>
+      <p class="mb-0">
+        This project was designed as a unified collection portfolio that brings different collectible categories into one premium dashboard. Instead of treating every hobby separately, Collectify presents collections as part of a single personal archive where users can organize items, monitor estimated value, and explore their portfolio through a clean visual interface. The goal behind the project is not just storage, but creating a more thoughtful and modern experience for collectors who care about both organization and presentation.
+      </p>
+    </div>
     </div>
   </header>
 
@@ -69,11 +73,11 @@
               <p class="text-muted-2 mt-3 mb-0" style="line-height:1.7;">
                 Responsible for UI design and implementation across every page of
                 Collectify, from the theme system and component library to the
-                charts, forms, and the data model below.
+                charts, forms, and interactive user experience.
               </p>
               <div class="d-flex justify-content-center gap-2 mt-4">
-                <a href="#" class="social-btn" style="width:auto;padding:.55rem .9rem;"><i class="bi bi-github"></i> GitHub</a>
-                <a href="#" class="social-btn" style="width:auto;padding:.55rem .9rem;"><i class="bi bi-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/Shlok22024" class="social-btn" style="width:auto;padding:.55rem .9rem;"><i class="bi bi-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/shlokgoud" class="social-btn" style="width:auto;padding:.55rem .9rem;"><i class="bi bi-linkedin"></i> LinkedIn</a>
                 <a href="mailto:shlok.n.goud@gmail.com" class="social-btn" style="width:auto;padding:.55rem .9rem;"><i class="bi bi-envelope"></i> Email</a>
               </div>
             </div>
@@ -252,9 +256,9 @@
               <!-- Legend -->
               <g transform="translate(30,310)">
                 <circle cx="6" cy="6" r="5" fill="#C7A97A"/>
-                <text class="field-type" x="20" y="10">PK · Primary Key</text>
+                <text class="field-type" x="20" y="10">PK &middot; Primary Key</text>
                 <circle cx="150" cy="6" r="5" fill="#D98880"/>
-                <text class="field-type" x="164" y="10">FK · Foreign Key</text>
+                <text class="field-type" x="164" y="10">FK &middot; Foreign Key</text>
                 <text class="field-type" x="300" y="10">Relationships shown as 1 : M (one-to-many)</text>
               </g>
             </svg>
@@ -267,21 +271,21 @@
         <div class="col-md-4" data-aos="fade-up">
           <div class="feature-card">
             <div class="feature-icon"><i class="bi bi-people"></i></div>
-            <h3>User → Collections</h3>
+            <h3>User <i class="bi bi-arrow-right"></i> Collections</h3>
             <p>One user can curate many collections, each grouped by theme or category.</p>
           </div>
         </div>
         <div class="col-md-4" data-aos="fade-up" data-aos-delay="80">
           <div class="feature-card">
             <div class="feature-icon"><i class="bi bi-collection"></i></div>
-            <h3>Collection → Items</h3>
+            <h3>Collection <i class="bi bi-arrow-right"></i> Items</h3>
             <p>Each collection holds many individual items like cards, vinyl and figurines, along with purchase and valuation data.</p>
           </div>
         </div>
         <div class="col-md-4" data-aos="fade-up" data-aos-delay="160">
           <div class="feature-card">
             <div class="feature-icon"><i class="bi bi-graph-up-arrow"></i></div>
-            <h3>Item → PriceHistory</h3>
+            <h3>Item <i class="bi bi-arrow-right"></i> PriceHistory</h3>
             <p>Every item tracks its valuation over time, enabling trend analysis and portfolio insights.</p>
           </div>
         </div>
@@ -293,8 +297,8 @@
   <!-- ===== Footer ===== -->
   <footer class="site-footer">
     <div class="container d-flex flex-wrap justify-content-between align-items-center">
-      <div><span class="brand-mark">◆</span> <strong>Collectify</strong> · Curate. Value. Treasure.</div>
-      <div class="text-muted-2 small">© 2026 Collectify · Prototype</div>
+      <div><span class="brand-mark"><i class="bi bi-diamond-fill"></i></span> <strong>Collectify</strong> &middot; Curate. Value. Treasure.</div>
+      <div class="text-muted-2 small">&copy; 2026 Collectify &middot; Prototype</div>
     </div>
   </footer>
 

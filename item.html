@@ -18,7 +18,7 @@
   <!-- ===== Navbar ===== -->
   <nav class="navbar navbar-expand-lg navbar-collectify">
     <div class="container">
-      <a class="navbar-brand" href="index.html"><span class="brand-mark">◆</span>Collectify</a>
+      <a class="navbar-brand" href="index.html"><span class="brand-mark"><i class="bi bi-diamond-fill"></i></span>Collectify</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -84,7 +84,7 @@
               <span class="condition-chip" id="conditionChip">
                 <i class="bi bi-shield-check"></i><span id="conditionText">Near Mint</span>
               </span>
-              <span class="text-muted-2 small">·</span>
+              <span class="text-muted-2 small">&middot;</span>
               <span class="text-muted-2 small" id="collectionLine">Trading Cards</span>
             </div>
 
@@ -199,8 +199,8 @@
   <!-- ===== Footer ===== -->
   <footer class="site-footer">
     <div class="container d-flex flex-wrap justify-content-between align-items-center">
-      <div><span class="brand-mark">◆</span> <strong>Collectify</strong> · Curate. Value. Treasure.</div>
-      <div class="text-muted-2 small">© 2026 Collectify · Prototype</div>
+      <div><span class="brand-mark"><i class="bi bi-diamond-fill"></i></span> <strong>Collectify</strong> &middot; Curate. Value. Treasure.</div>
+      <div class="text-muted-2 small">&copy; 2026 Collectify &middot; Prototype</div>
     </div>
   </footer>
 
@@ -288,7 +288,7 @@
                 '</div>' +
                 '<div class="flex-grow-1" style="min-width:0;">' +
                   '<div style="font-weight:500;color:var(--text);" class="text-truncate">' + it.name + '</div>' +
-                  '<div class="text-muted-2 small">' + CollectifyUI.formatMoney(it.estimatedValue) + ' · ' + it.condition + '</div>' +
+                  '<div class="text-muted-2 small">' + CollectifyUI.formatMoney(it.estimatedValue) + ' &middot; ' + it.condition + '</div>' +
                 '</div>' +
                 '<i class="bi bi-arrow-right text-gold"></i>' +
               '</div>' +
