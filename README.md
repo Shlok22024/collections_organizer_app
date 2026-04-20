@@ -37,15 +37,25 @@ The goal of this project is to build a structured and visually appealing prototy
 /js → JavaScript files (charts, interactions)
 
 index.html → Home page (overview and features)
+
 dashboard.html → Data visualization page (charts)
+
 create.html → Create item form (UI only)
+
 read.html → View items table
+
 update.html → Update item form (UI only)
+
 delete.html → Delete items interface
+
 about.html → About page (project info + data model)
+
 item.html → Item details page
+
 profile.html → User profile page
+
 login.html → Login page UI
+
 mybot.html → Standalone Botpress chatbot page for a separate assignment
 
 
@@ -89,4 +99,5 @@ Example queries:
 
 ## Author
 Shlok Goud - USF Muma College of Business
+---
 Developed as part of a web design assignment.
