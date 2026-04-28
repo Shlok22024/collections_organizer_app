@@ -370,3 +370,9 @@ FodyWeavers.xsd
 *.suo
 *.userosscache
 *.sln.docstates
+# Visual Studio local/build files
+.vs/
+bin/
+obj/
+*.user
+*.suo
