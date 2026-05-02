@@ -1,0 +1,63 @@
+﻿<main class="section">
+    <div class="container">
+
+        <div class="d-flex flex-wrap align-items-end justify-content-between mb-4" data-aos="fade-up">
+            <div>
+                <div class="section-label">Overview</div>
+                <h1 class="section-title mb-2">Portfolio Dashboard</h1>
+                <p class="text-muted-2 mb-0">A live snapshot of your collections, valuations and trends.</p>
+            </div>
+            <div class="text-muted-2 small mt-3 mt-md-0">
+                <i class="bi bi-calendar3 me-1"></i> Last updated: Today
+            </div>
+        </div>
+
+        <!-- KPI strip -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-4" data-aos="zoom-in">
+                <div class="stat-card">
+                    <div class="stat-label">Total Collections</div>
+                    <div class="stat-value">12</div>
+                    <div class="stat-trend"><i class="bi bi-arrow-up-short text-gold"></i> 2 added this month</div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="80">
+                <div class="stat-card">
+                    <div class="stat-label">Total Items</div>
+                    <div class="stat-value">438</div>
+                    <div class="stat-trend"><i class="bi bi-arrow-up-short text-gold"></i> 17 added this month</div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="160">
+                <div class="stat-card">
+                    <div class="stat-label">Estimated Portfolio Value</div>
+                    <div class="stat-value">$24,860</div>
+                    <div class="stat-trend"><i class="bi bi-arrow-up-short text-gold"></i> +6.4% vs last month</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="row g-4">
+            <div class="col-lg-5" data-aos="fade-up">
+                <div class="chart-card">
+                    <h5>Portfolio Distribution by Category</h5>
+                    <div class="chart-canvas-wrap"><canvas id="pieChart"></canvas></div>
+                </div>
+            </div>
+            <div class="col-lg-7" data-aos="fade-up" data-aos-delay="80">
+                <div class="chart-card">
+                    <h5>Top Valuable Items</h5>
+                    <div class="chart-canvas-wrap"><canvas id="barChart"></canvas></div>
+                </div>
+            </div>
+            <div class="col-12" data-aos="fade-up" data-aos-delay="160">
+                <div class="chart-card">
+                    <h5>Portfolio Value Over Time</h5>
+                    <div class="chart-canvas-wrap" style="height: 320px;"><canvas id="lineChart"></canvas></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
