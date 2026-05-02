@@ -1,0 +1,67 @@
+﻿<!-- ===== Main ===== -->
+<main class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 col-md-9">
+
+                <div class="text-center mb-4" data-aos="fade-up">
+                    <div class="section-label">Add</div>
+                    <h1 class="section-title mb-2">New Collection Item</h1>
+                    <p class="text-muted-2">Record a new piece in your portfolio.</p>
+                </div>
+
+                <div class="card-lux" data-aos="fade-up" data-aos-delay="60">
+                    <div class="card-body p-4 p-md-5">
+                        <form id="createForm">
+
+                            <div class="mb-3">
+                                <label for="itemName" class="form-label">Item Name</label>
+                                <input type="text" class="form-control" id="itemName" placeholder="e.g. Charizard VMAX Rainbow Rare" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="itemCategory" class="form-label">Category</label>
+                                <select class="form-select" id="itemCategory" required>
+                                    <option value="" selected disabled>Choose a category...</option>
+                                    <option>Cards</option>
+                                    <option>Vinyl</option>
+                                    <option>Figurines</option>
+                                </select>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label for="purchasePrice" class="form-label">Purchase Price (USD)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" step="0.01" min="0" class="form-control" id="purchasePrice" placeholder="0.00" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="estimatedValue" class="form-label">Estimated Value (USD)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" step="0.01" min="0" class="form-control" id="estimatedValue" placeholder="0.00" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-wrap gap-2 mt-4 pt-2">
+                                <button type="submit" class="btn btn-gold flex-fill">
+                                    <i class="bi bi-check2-circle me-1"></i> Create Item
+                                </button>
+                                <a href="read.html" class="btn btn-ghost flex-fill">Cancel</a>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                <p class="text-center text-muted-2 small mt-3" data-aos="fade-up" data-aos-delay="120">
+                    <i class="bi bi-info-circle me-1"></i> This is a prototype, submissions are not saved.
+                </p>
+
+            </div>
+        </div>
+    </div>
+</main>
