@@ -6,8 +6,8 @@
     // { "Action", "Icon", "Text Label" }
     string[,] dropDownItems = {
         { "create", "bi bi-plus-circle me-2", "Add Item" },
-        { "read", "bi bi-list-ul me-2", "List" },
-        { "update", "bi bi-pencil-square me-2", "Update" },
+        { "", "bi bi-list-ul me-2", "List" },
+        { "edit", "bi bi-pencil-square me-2", "Update" },
         { "delete", "bi bi-trash me-2", "Delete" }
     };
 
@@ -41,7 +41,7 @@
     <!-- ===== Navbar ===== -->
     <nav class="navbar navbar-expand-lg navbar-collectify">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="/home">
                 <span class="brand-mark"><i class="bi bi-diamond-fill"></i></span>Collectify
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
@@ -67,7 +67,7 @@
                                         bool isActive2 = string.Equals(@dropDownItems[i,0], currentController, StringComparison.OrdinalIgnoreCase);
 
                                         <li>
-                                            <a class="dropdown-item @(isActive2 ? "active" : "")" href="@dropDownItems[i,0]">
+                                            <a class="dropdown-item @(isActive2 ? "active" : "")" href="/items/@dropDownItems[i,0]">
                                                 <i class="@dropDownItems[i,1]"></i>@dropDownItems[i,2]
                                             </a>
                                         </li>
@@ -79,16 +79,23 @@
                         {
                             @* Special button style for Sign In *@
                             <li class="nav-item ms-lg-2">
-                                <a class="btn btn-outline-gold btn-sm px-3 @(currentController == "Login" ? "active" : "")" href="login">
+                                <a class="btn btn-outline-gold btn-sm px-3 @(currentController == "Login" ? "active" : "")" href="/login">
                                     <i class="bi bi-person-circle me-1"></i> Sign in
                                 </a>
+                            </li>
+                        }
+                        else if (pageName == "About")
+                        {
+                            @* Special button style for About *@
+                            <li class="nav-item">
+                                <a class="nav-link @(isActive ? "active" : "")" href="/home/about">About</a>
                             </li>
                         }
                         else
                         {
                             @* Standard style for everyone else *@
                             <li class="nav-item">
-                                <a class="nav-link @(isActive ? "active" : "")" href=@pageName.ToLower()>@pageName</a>
+                                <a class="nav-link @(isActive ? "active" : "")" href="/@pageName.ToLower()">@pageName</a>
                             </li>
                         }
                     }
