@@ -1,6 +1,6 @@
 ﻿@{
     // Define navigation pages for dynamic rendering
-    string[] navPages = { "Home", "Dashboard", "Manage","About", "Sign In" };
+    string[] navPages = { "Home", "Dashboard", "Manage", "About" };
 
     // Define dropdown items for the Manage menu
     // { "Action", "Icon", "Text Label" }
@@ -75,15 +75,6 @@
                                 </ul>
                             </li>
                         }
-                        else if (pageName == "Sign In")
-                        {
-                            @* Special button style for Sign In *@
-                            <li class="nav-item ms-lg-2">
-                                <a class="btn btn-outline-gold btn-sm px-3 @(currentController == "Login" ? "active" : "")" href="/login">
-                                    <i class="bi bi-person-circle me-1"></i> Sign in
-                                </a>
-                            </li>
-                        }
                         else if (pageName == "About")
                         {
                             @* Special button style for About *@
@@ -121,8 +112,8 @@
         AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
     </script>
   
-    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
-    <script src="https://files.bpcontent.cloud/2026/04/20/00/20260420000929-257CPL8Z.js" defer></script>
+    @* <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script> *@
+    @* <script src="https://files.bpcontent.cloud/2026/04/20/00/20260420000929-257CPL8Z.js" defer></script> *@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script src="js/charts.js"></script>
