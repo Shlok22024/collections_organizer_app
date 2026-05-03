@@ -2,7 +2,97 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- ===== Hero ===== -->
+<header class="hero text-center">
+    <div class="container position-relative">
+        <span class="eyebrow" data-aos="fade-down">Collector-grade portfolio tracking</span>
+        <h1 data-aos="fade-up" data-aos-delay="80">
+            Track every collection, <span class="accent">beautifully.</span>
+        </h1>
+        <p class="lead" data-aos="fade-up" data-aos-delay="160">
+            Collectify is a single, elegant home for your cards, vinyl, figurines, coins and everything in between,
+            with portfolio insights worthy of your finest pieces.
+        </p>
+        <div data-aos="fade-up" data-aos-delay="240">
+            <a href="dashboard" class="btn btn-gold me-2">
+                Open Dashboard <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+            <a href="#features" class="btn btn-ghost">Learn more</a>
+        </div>
+    </div>
+</header>
+
+<!-- ===== Features ===== -->
+<section id="features" class="section">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <div class="section-label">What Collectify offers</div>
+            <h2 class="section-title">Built for serious collectors</h2>
+            <p class="section-sub">Everything you need to organise, value and grow your collections, without the spreadsheet sprawl.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="80">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-collection"></i></div>
+                    <h3>Multi-Collection Tracking</h3>
+                    <p>Manage TCG, vinyl, figurines, coins and more, each in its own organised vault, all in one place.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="160">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                    <h3>Portfolio Value Insights</h3>
+                    <p>See your portfolio's value across categories with elegant charts that make trends obvious at a glance.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="240">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-tags"></i></div>
+                    <h3>Category-Based Organization</h3>
+                    <p>Tag, sort and filter every item by category, condition or value. Find any piece in seconds.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Preview Section ===== -->
+<section class="section pt-0">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <div class="section-label">A glimpse inside</div>
+            <h2 class="section-title">Your portfolio at a glance</h2>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="80">
+                <div class="stat-card">
+                    <div class="stat-label">Total Collections</div>
+                    <div class="stat-value">12</div>
+                    <div class="stat-trend"><i class="bi bi-arrow-up-short text-gold"></i> 2 added this month</div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="160">
+                <div class="stat-card">
+                    <div class="stat-label">Total Items</div>
+                    <div class="stat-value">438</div>
+                    <div class="stat-trend"><i class="bi bi-arrow-up-short text-gold"></i> 17 added this month</div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="240">
+                <div class="stat-card">
+                    <div class="stat-label">Estimated Portfolio Value</div>
+                    <div class="stat-value">$24,860</div>
+                    <div class="stat-trend"><i class="bi bi-arrow-up-short text-gold"></i> +6.4% vs last month</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="dashboard" class="btn btn-gold">
+                Explore the dashboard <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+        </div>
+    </div>
+</section>

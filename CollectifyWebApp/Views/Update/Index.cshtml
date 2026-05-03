@@ -1,0 +1,132 @@
+﻿<!-- ===== Main ===== -->
+<main class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 col-md-9">
+
+                <div class="text-center mb-4" data-aos="fade-up">
+                    <div class="section-label">Edit</div>
+                    <h1 class="section-title mb-2">Update Item</h1>
+                    <p class="text-muted-2">Adjust details or refresh the estimated value.</p>
+                </div>
+
+                <!-- ===== Step 1: Selection card (shown when no ?id param) ===== -->
+                <div id="selectCard" class="card-lux" data-aos="fade-up" data-aos-delay="60" hidden>
+                    <div class="card-body p-4 p-md-5">
+
+                        <div class="d-flex align-items-center gap-3 mb-4 pb-3" style="border-bottom:1px solid var(--border);">
+                            <div class="d-flex align-items-center justify-content-center" style="width:48px;height:48px;border-radius:12px;background:rgba(199,169,122,0.10);border:1px solid var(--border-strong);color:var(--accent);font-size:1.25rem;">
+                                <i class="bi bi-search"></i>
+                            </div>
+                            <div>
+                                <div class="text-muted-2 small" style="letter-spacing:.12em;text-transform:uppercase;">Step 1</div>
+                                <div style="font-family:'Playfair Display',serif;font-size:1.15rem;">Choose an item to edit</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="selectCollection" class="form-label">Collection</label>
+                            <select class="form-select" id="selectCollection">
+                                <option value="" selected disabled>Choose a collection...</option>
+                                <option value="Trading Cards">Trading Cards</option>
+                                <option value="Vinyl Records">Vinyl Records</option>
+                                <option value="Figurines">Figurines</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="selectItem" class="form-label">Item</label>
+                            <select class="form-select" id="selectItem" disabled>
+                                <option value="" selected disabled>Select a collection first...</option>
+                            </select>
+                        </div>
+
+                        <button type="button" class="btn btn-gold w-100 mt-2" id="continueBtn" disabled>
+                            <i class="bi bi-arrow-right-circle me-1"></i> Continue to edit
+                        </button>
+
+                        <p class="text-center text-muted-2 small mt-3 mb-0">
+                            Or pick an item directly from the <a href="read.html">list view</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ===== Step 2: Edit form (shown after selection or ?id load) ===== -->
+                <div id="editCard" class="card-lux" data-aos="fade-up" data-aos-delay="60" hidden>
+                    <div class="card-body p-4 p-md-5">
+
+                        <div class="d-flex align-items-center gap-3 mb-4 pb-3" style="border-bottom:1px solid var(--border);">
+                            <div class="d-flex align-items-center justify-content-center" id="editIconWrap" style="width:48px;height:48px;border-radius:12px;background:rgba(199,169,122,0.10);border:1px solid var(--border-strong);color:var(--accent);font-size:1.25rem;">
+                                <i class="bi bi-collection" id="editIcon"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="text-muted-2 small" style="letter-spacing:.12em;text-transform:uppercase;">Editing</div>
+                                <div style="font-family:'Playfair Display',serif;font-size:1.15rem;" id="editHeadline">Item</div>
+                            </div>
+                            <a href="update.html" class="btn btn-ghost btn-sm" title="Pick a different item">
+                                <i class="bi bi-arrow-repeat"></i>
+                            </a>
+                        </div>
+
+                        <form id="updateForm">
+                            <input type="hidden" id="itemId">
+
+                            <div class="mb-3">
+                                <label for="itemName" class="form-label">Item Name</label>
+                                <input type="text" class="form-control" id="itemName" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="itemCategory" class="form-label">Category</label>
+                                <select class="form-select" id="itemCategory" required>
+                                    <option>Cards</option>
+                                    <option>Vinyl</option>
+                                    <option>Figurines</option>
+                                </select>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label for="purchasePrice" class="form-label">Purchase Price (USD)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" step="0.01" min="0" class="form-control" id="purchasePrice" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="estimatedValue" class="form-label">Estimated Value (USD)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" step="0.01" min="0" class="form-control" id="estimatedValue" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-wrap gap-2 mt-4 pt-2">
+                                <button type="submit" class="btn btn-gold flex-fill">
+                                    <i class="bi bi-save me-1"></i> Update Item
+                                </button>
+                                <a href="read.html" class="btn btn-ghost flex-fill">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ===== Not found card ===== -->
+                <div id="notFoundCard" class="card-lux" data-aos="fade-up" data-aos-delay="60" hidden>
+                    <div class="card-body p-4 p-md-5 text-center">
+                        <i class="bi bi-question-circle" style="font-size:2.5rem;color:var(--accent);"></i>
+                        <h4 class="mt-3" style="font-family:'Playfair Display',serif;">Item not found</h4>
+                        <p class="text-muted-2">That item ID doesn't match anything in your collection.</p>
+                        <a href="read.html" class="btn btn-gold mt-2"><i class="bi bi-list-ul me-1"></i> Back to list</a>
+                    </div>
+                </div>
+
+                <p class="text-center text-muted-2 small mt-3" data-aos="fade-up" data-aos-delay="120">
+                    <i class="bi bi-info-circle me-1"></i> This is a prototype, changes are not persisted.
+                </p>
+
+            </div>
+        </div>
+    </div>
+</main>

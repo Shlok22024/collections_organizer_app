@@ -1,0 +1,124 @@
+﻿<!-- ===== Main ===== -->
+<main class="section">
+    <div class="container">
+
+        <div class="d-flex flex-wrap align-items-end justify-content-between mb-4" data-aos="fade-up">
+            <div>
+                <div class="section-label">Inventory</div>
+                <h1 class="section-title mb-2">Your Items</h1>
+                <p class="text-muted-2 mb-0">Browse every piece across your collections.</p>
+            </div>
+            <a href="create.html" class="btn btn-gold mt-3 mt-md-0">
+                <i class="bi bi-plus-circle me-1"></i> Add Item
+            </a>
+        </div>
+
+        <!-- Search + filters -->
+        <div class="row g-3 align-items-center mb-4" data-aos="fade-up" data-aos-delay="60">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    <input type="text" class="form-control" placeholder="Search items by name, category, or value..." aria-label="Search items">
+                    <button type="button" class="btn btn-gold">
+                        <i class="bi bi-search me-1"></i> Search
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <select class="form-select" aria-label="Filter by category">
+                    <option selected>All categories</option>
+                    <option>Cards</option>
+                    <option>Vinyl</option>
+                    <option>Figurines</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-select" aria-label="Sort order">
+                    <option selected>Newest</option>
+                    <option>Value (high to low)</option>
+                    <option>Value (low to high)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-wrap" data-aos="fade-up" data-aos-delay="120">
+            <div class="table-responsive">
+                <table class="table table-lux align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width:56px;"></th>
+                            <th scope="col">Item Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col" class="text-end">Purchase Price</th>
+                            <th scope="col" class="text-end">Estimated Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a class="btn-icon" href="update.html?id=charizard-vmax" title="Edit item" aria-label="Edit Charizard VMAX Rainbow Rare"><i class="bi bi-pencil-square"></i></a></td>
+                            <td><a class="item-link" href="item.html?id=charizard-vmax">Charizard VMAX Rainbow Rare</a></td>
+                            <td><span class="badge-cat">Cards</span></td>
+                            <td class="text-end">$120.00</td>
+                            <td class="text-end text-gold">$340.00</td>
+                        </tr>
+                        <tr>
+                            <td><a class="btn-icon" href="update.html?id=pink-floyd-the-wall" title="Edit item" aria-label="Edit Pink Floyd The Wall"><i class="bi bi-pencil-square"></i></a></td>
+                            <td><a class="item-link" href="item.html?id=pink-floyd-the-wall">Pink Floyd: The Wall (1979 1st Press)</a></td>
+                            <td><span class="badge-cat">Vinyl</span></td>
+                            <td class="text-end">$45.00</td>
+                            <td class="text-end text-gold">$180.00</td>
+                        </tr>
+                        <tr>
+                            <td><a class="btn-icon" href="update.html?id=demon-slayer-tanjiro" title="Edit item" aria-label="Edit Demon Slayer Tanjiro Kamado"><i class="bi bi-pencil-square"></i></a></td>
+                            <td><a class="item-link" href="item.html?id=demon-slayer-tanjiro">Demon Slayer: Tanjiro Kamado (Kimetsu)</a></td>
+                            <td><span class="badge-cat">Figurines</span></td>
+                            <td class="text-end">$85.00</td>
+                            <td class="text-end text-gold">$210.00</td>
+                        </tr>
+                        <tr>
+                            <td><a class="btn-icon" href="update.html?id=pikachu-illustrator" title="Edit item" aria-label="Edit Pikachu Illustrator Promo"><i class="bi bi-pencil-square"></i></a></td>
+                            <td><a class="item-link" href="item.html?id=pikachu-illustrator">Pikachu Illustrator Promo</a></td>
+                            <td><span class="badge-cat">Cards</span></td>
+                            <td class="text-end">$500.00</td>
+                            <td class="text-end text-gold">$1,250.00</td>
+                        </tr>
+                        <tr>
+                            <td><a class="btn-icon" href="update.html?id=abbey-road-1969" title="Edit item" aria-label="Edit The Beatles Abbey Road"><i class="bi bi-pencil-square"></i></a></td>
+                            <td><a class="item-link" href="item.html?id=abbey-road-1969">The Beatles: Abbey Road (1969 UK)</a></td>
+                            <td><span class="badge-cat">Vinyl</span></td>
+                            <td class="text-end">$60.00</td>
+                            <td class="text-end text-gold">$240.00</td>
+                        </tr>
+                        <tr>
+                            <td><a class="btn-icon" href="update.html?id=luffy-gear-5" title="Edit item" aria-label="Edit One Piece Luffy Gear 5"><i class="bi bi-pencil-square"></i></a></td>
+                            <td><a class="item-link" href="item.html?id=luffy-gear-5">One Piece: Luffy Gear 5 (P.O.P.)</a></td>
+                            <td><span class="badge-cat">Figurines</span></td>
+                            <td class="text-end">$110.00</td>
+                            <td class="text-end text-gold">$185.00</td>
+                        </tr>
+                        <tr>
+                            <td><a class="btn-icon" href="update.html?id=black-lotus-alpha" title="Edit item" aria-label="Edit Black Lotus Alpha"><i class="bi bi-pencil-square"></i></a></td>
+                            <td><a class="item-link" href="item.html?id=black-lotus-alpha">Black Lotus Alpha</a></td>
+                            <td><span class="badge-cat">Cards</span></td>
+                            <td class="text-end">$800.00</td>
+                            <td class="text-end text-gold">$2,400.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-3">
+            <div class="text-muted-2 small">Showing 7 of 7 items</div>
+            <nav aria-label="Pagination">
+                <ul class="pagination pagination-sm mb-0">
+                    <li class="page-item disabled"><a class="page-link" href="#">Prev</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+</main>
