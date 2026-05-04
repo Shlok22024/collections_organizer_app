@@ -376,3 +376,10 @@ bin/
 obj/
 *.user
 *.suo
+
+# Visual Studio local files
+.vs/
+bin/
+obj/
+*.user
+*.suo
