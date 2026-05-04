@@ -1,6 +1,12 @@
 ﻿@{
     // Define navigation pages for dynamic rendering
-    string[] navPages = { "Home", "Dashboard", "Manage", "About" };
+    // { "href", "Text Label" }
+    string[,] navPages = {
+        { "home", "Home" },
+        { "dashboard", "Dashboard" },
+        { "items", "Manage" },
+        { "home/about", "About" }
+    };
 
     // Define dropdown items for the Manage menu
     // { "Action", "Icon", "Text Label" }
@@ -12,6 +18,7 @@
     };
 
     var currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["Action"]?.ToString();
 }
 
 <!DOCTYPE html>
@@ -50,43 +57,48 @@
             <div class="collapse navbar-collapse" id="nav">
                 <ul class="navbar-nav ms-auto align-items-lg-center">
                     @*Dynamically render navigation items*@
-                    @foreach (var pageName in navPages)
+                    @for (int i = 0; i < navPages.GetLength(0); i++)
                     {
-                        bool isActive = string.Equals(pageName, currentController, StringComparison.OrdinalIgnoreCase);
+                        string href = navPages[i, 0].ToLower();
+                        string label = navPages[i, 1];
 
-                        if (pageName == "Manage")
+                        string[] hrefSplit = (href + "/").Split('/');
+                        string controller = hrefSplit.Length > 0 ? hrefSplit[0] : "home";
+                        string action = (hrefSplit.Length > 1 && hrefSplit[1] != "") ? hrefSplit[1] : "index";
+
+                        if (label == "Manage")
                         {
-                            @* Fill the Manage List*@
-                            string currentClass = isActive ? "nav-link dropdown-toggle active" : "nav-link dropdown-toggle";
-
+                            // Handle Manage dropdown separately
+                            bool isActive = string.Equals(controller, currentController, StringComparison.OrdinalIgnoreCase);
                             <li class="nav-item dropdown">
-                                <a class="@currentClass" href="#" role="button" data-bs-toggle="dropdown">Manage</a>
+                                <a class="nav-link dropdown-toggle @(isActive ? "active" : "")" href="#" role="button" data-bs-toggle="dropdown">Manage</a>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    @for (int i = 0; i < dropDownItems.GetLength(0); i++)
+                                    @for (int j = 0; j < dropDownItems.GetLength(0); j++)
                                     {
-                                        bool isActive2 = string.Equals(@dropDownItems[i,0], currentController, StringComparison.OrdinalIgnoreCase);
-
+                                        string actionName = dropDownItems[j, 0].ToLower();
+                                        string iconClass = dropDownItems[j, 1];
+                                        string itemLabel = dropDownItems[j, 2];
+                                        bool isActive2 = isActive && string.Equals(actionName, currentAction, StringComparison.OrdinalIgnoreCase);
+                                        if (string.Equals(actionName, "", StringComparison.OrdinalIgnoreCase))
+                                        {
+                                            // Special case of the List button, which goes to the index action
+                                            isActive2 = isActive && string.Equals("index", currentAction, StringComparison.OrdinalIgnoreCase);
+                                        }
                                         <li>
-                                            <a class="dropdown-item @(isActive2 ? "active" : "")" href="/items/@dropDownItems[i,0]">
-                                                <i class="@dropDownItems[i,1]"></i>@dropDownItems[i,2]
+                                            <a class="dropdown-item @(isActive2 ? "active" : "")" href="/items/@actionName">
+                                                <i class="@iconClass"></i> @itemLabel
                                             </a>
                                         </li>
                                     }
                                 </ul>
                             </li>
                         }
-                        else if (pageName == "About")
-                        {
-                            @* Special button style for About *@
-                            <li class="nav-item">
-                                <a class="nav-link @(isActive ? "active" : "")" href="/home/about">About</a>
-                            </li>
-                        }
                         else
                         {
-                            @* Standard style for everyone else *@
+                            // Standard navigation item
+                            bool isActive = string.Equals(controller, currentController, StringComparison.OrdinalIgnoreCase) && string.Equals(action, currentAction, StringComparison.OrdinalIgnoreCase);
                             <li class="nav-item">
-                                <a class="nav-link @(isActive ? "active" : "")" href="/@pageName.ToLower()">@pageName</a>
+                                <a class="nav-link @(isActive ? "active" : "")" href="/@href">@label</a>
                             </li>
                         }
                     }
