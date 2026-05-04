@@ -1,0 +1,37 @@
+﻿@model IEnumerable<CollectifyWebApp.Models.PokemonResult>
+
+<h2>Search Pokémon Cards</h2>
+
+<!-- 1. The Search Bar -->
+<form asp-action="ApiSearch" method="get">
+    <input type="text" name="cardName" placeholder="Enter Pokemon name..." />
+    <button type="submit">Search</button>
+</form>
+
+<hr />
+
+<!-- 2. The Results Grid -->
+<div class="row">
+    @if (Model != null)
+    {
+        foreach (var card in Model)
+        {
+            <div class="col-md-4" style="margin-bottom: 20px;">
+                <div class="card">
+                    <!-- TCGDex images usually need /low.png or /high.png at the end -->
+                    <img src="@card.Image/low.png" style="width:100%" />
+                    <div class="card-body">
+                        <h5>@card.Name</h5>
+                        <p>Set: @card.SetName</p>
+                        
+                        <!-- 3. The Link to your existing Add Item page -->
+                        @* <a href="/Items/Create?name=@card.Name&set=@card.SetName&image=@card.Image"
+                               class="btn btn-success">
+                            Add
+                        </a> *@
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
