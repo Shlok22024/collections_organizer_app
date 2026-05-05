@@ -11,8 +11,13 @@ namespace CollectifyWebApp.Controllers
             return View();
         }
 
-        public IActionResult Create()
+        public IActionResult Create(string? name, string? set, string? rarity, string? image, decimal? price)
         {
+            ViewBag.Name = name;
+            ViewBag.Set = set;
+            ViewBag.Rarity = rarity;
+            ViewBag.Image = image;
+            ViewBag.Price = price;
             return View();
         }
 
@@ -37,6 +42,13 @@ namespace CollectifyWebApp.Controllers
 
             // 2. Send that list to a search results page
             return View(response);
+        }
+
+        public async Task<IActionResult> CardDetail(string cardId)
+        {
+            using var client = new HttpClient();
+            var card = await client.GetFromJsonAsync<PokemonResult>($"https://api.tcgdex.net/v2/en/cards/{cardId}");
+            return View(card);
         }
     }
 }
