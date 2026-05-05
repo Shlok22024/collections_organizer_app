@@ -720,7 +720,7 @@ a {
         border-color: var(--accent);
     }
 
-/* ---------- Toast (shared via js/ui.js) ---------- */
+/* ---------- Toast (shared via js/site.js) ---------- */
 .toast-host {
     position: fixed;
     right: 1.25rem;
