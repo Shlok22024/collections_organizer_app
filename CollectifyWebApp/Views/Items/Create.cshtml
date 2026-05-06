@@ -1,4 +1,6 @@
-﻿<!-- ===== Main ===== -->
+﻿@model CollectifyWebApp.Models.Item
+
+<!-- ===== Main ===== -->
 <main class="section">
     <div class="container">
         <div class="row justify-content-center">
@@ -12,7 +14,12 @@
 
                 <div class="card-lux" data-aos="fade-up" data-aos-delay="60">
                     <div class="card-body p-4 p-md-5">
-                        <form id="createForm">
+                        <form asp-action="Create" method="post">
+
+                            @* Hidden fields for API autofill data *@
+                            <input type="hidden" name="Image" value="@ViewBag.Image" />
+                            <input type="hidden" name="Set" value="@ViewBag.Set" />
+                            <input type="hidden" name="Rarity" value="@ViewBag.Rarity" />
 
                             <div class="mb-3">
                                 <label for="itemName" class="form-label">Item Name</label>
@@ -54,16 +61,11 @@
                                     <i class="bi bi-check2-circle me-1"></i> Create Item
                                 </button>
                                 <a asp-action="Index" class="btn btn-ghost flex-fill">Cancel</a>
-                                @* <a href="read.html" class="btn btn-ghost flex-fill">Cancel</a> *@
                             </div>
 
                         </form>
                     </div>
                 </div>
-
-                <p class="text-center text-muted-2 small mt-3" data-aos="fade-up" data-aos-delay="120">
-                    <i class="bi bi-info-circle me-1"></i> This is a prototype, submissions are not saved.
-                </p>
 
             </div>
         </div>
