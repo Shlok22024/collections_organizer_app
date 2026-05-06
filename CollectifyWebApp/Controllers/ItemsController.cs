@@ -1,16 +1,27 @@
-﻿using CollectifyWebApp.Models;
+﻿using CollectifyWebApp.Data;
+using CollectifyWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CollectifyWebApp.Controllers
 {
     public class ItemsController : Controller
     {
-        // Read acts as Index
-        public IActionResult Index()
+        private readonly ApplicationDbContext _context;
+
+        public ItemsController(ApplicationDbContext context)
         {
-            return View();
+            _context = context;
         }
 
+        // READ - List all items
+        public async Task<IActionResult> Index()
+        {
+            var items = await _context.Items.ToListAsync();
+            return View(items);
+        }
+
+        // CREATE - Show form
         public IActionResult Create(string? name, string? set, string? rarity, string? image, decimal? price)
         {
             ViewBag.Name = name;
@@ -21,29 +32,73 @@ namespace CollectifyWebApp.Controllers
             return View();
         }
 
-        // Edit acts as Update
-        public IActionResult Edit()
+        // CREATE - Handle form submission
+        [HttpPost]
+        public async Task<IActionResult> Create(Item item)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                item.DateAdded = DateTime.Now;
+                _context.Items.Add(item);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(item);
         }
 
-        public IActionResult Delete ()
+        // EDIT - Show form
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            var item = await _context.Items.FindAsync(id);
+            if (item == null) return NotFound();
+            return View(item);
         }
 
+        // EDIT - Handle form submission
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, Item item)
+        {
+            if (id != item.Id) return NotFound();
+            if (ModelState.IsValid)
+            {
+                _context.Items.Update(item);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(item);
+        }
+
+        // DELETE - Show confirmation
+        public async Task<IActionResult> Delete(int id)
+        {
+            var item = await _context.Items.FindAsync(id);
+            if (item == null) return NotFound();
+            return View(item);
+        }
+
+        // DELETE - Handle confirmation
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var item = await _context.Items.FindAsync(id);
+            if (item != null)
+            {
+                _context.Items.Remove(item);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        // API SEARCH
         public async Task<IActionResult> ApiSearch(string cardName)
         {
             if (string.IsNullOrEmpty(cardName)) return View(new List<PokemonResult>());
-
             using var client = new HttpClient();
-            // 1. Ask the API for cards with that name
             var response = await client.GetFromJsonAsync<List<PokemonResult>>($"https://api.tcgdex.net/v2/en/cards?name={cardName}");
-
-            // 2. Send that list to a search results page
             return View(response);
         }
 
+        // CARD DETAIL
         public async Task<IActionResult> CardDetail(string cardId)
         {
             using var client = new HttpClient();
