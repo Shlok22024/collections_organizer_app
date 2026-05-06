@@ -383,3 +383,8 @@ bin/
 obj/
 *.user
 *.suo
+
+# SQLite
+*.db
+*.db-shm
+*.db-wal
