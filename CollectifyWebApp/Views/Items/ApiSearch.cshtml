@@ -22,11 +22,14 @@
                     <img src="@card.Image/low.png" style="width:100%" />
                     <div class="card-body">
                         <h5>@card.Name</h5>
-                        <p>Set: @card.SetName</p>
+                        <p>Set: @card.Set?.Name</p>
+                        <a asp-action="CardDetail" asp-route-cardId="@card.Id" class="btn btn-primary">
+                            View Details
+                        </a>
                         
                         <!-- 3. The Link to your existing Add Item page -->
-                        @* <a href="/Items/Create?name=@card.Name&set=@card.SetName&image=@card.Image"
-                               class="btn btn-success">
+                        @* <a href="/Items/Create?name=@card.Name&set=@card.Set?.Name&image=@card.Image"
+                                class="btn btn-success">
                             Add
                         </a> *@
                     </div>

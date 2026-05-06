@@ -1,0 +1,36 @@
+﻿@model CollectifyWebApp.Models.PokemonResult
+
+<div class="container mt-4">
+    <h2>@Model.Name</h2>
+
+    @if (Model.Image != null)
+    {
+        <img src="@Model.Image/low.png" style="width:200px;" class="mb-3" />
+    }
+
+    <ul>
+        <li><strong>Set:</strong> @Model.Set?.Name</li>
+        <li><strong>Rarity:</strong> @Model.Rarity</li>
+        @if (Model.Pricing?.Cardmarket != null)
+        {
+            <li><strong>Price (Trend):</strong> @Model.Pricing.Cardmarket.Trend @Model.Pricing.Cardmarket.Unit</li>
+            <li><strong>Price (Avg 7 Day):</strong> @Model.Pricing.Cardmarket.Avg @Model.Pricing.Cardmarket.Unit</li>
+        }
+        else
+        {
+            <li><strong>Price:</strong> Not available</li>
+        }
+    </ul>
+
+    <a asp-controller="Items" asp-action="Create"
+           asp-route-name="@Model.Name"
+           asp-route-set="@Model.Set?.Name"
+           asp-route-rarity="@Model.Rarity"
+           asp-route-image="@Model.Image"
+           asp-route-price="@Model.Pricing?.Cardmarket?.Trend"
+           class="btn btn-success mt-3">
+        Add to Collectify
+    </a>
+
+    <a asp-action="ApiSearch" class="btn btn-secondary mt-3">Back to Search</a>
+</div>
